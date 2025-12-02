@@ -1,0 +1,6 @@
+name,category,price_band,portability,environment,audio_quality,stabilization,experience,best_for,description,components
+Compact Travel Kit,camera,low,high,outdoor;hybrid,medium,medium,beginner,"travel;daily vlog;outdoor","Kit ringkas untuk vlogger mobile berbasis kamera compact.","Sony ZV-1|Rode Wireless GO II|Joby GorillaPod 3K|Ulanzi VL49"
+Hybrid Creator Kit,camera,medium,medium,indoor;outdoor;hybrid,high,high,intermediate,"hybrid;travel;interview","Set mirrorless ringan untuk foto dan video.","Sony a6400 + 16-50|Rode VideoMic NTG|Zhiyun Weebill S|Aputure MC"
+Studio Podcast Kit,audio,medium,low,indoor,high,medium,intermediate,"studio;podcast;talking head","Fokus audio dan pencahayaan indoor.","Panasonic GH5|Shure SM7B|Focusrite Scarlett 2i2|Elgato Key Light Air"
+Action Cinematic Kit,action,high,medium,outdoor,medium,high,intermediate,"action;travel;sports","Kombinasi GoPro dan kamera sinematik ringan.","GoPro Hero 12|DJI RS 3 Mini|Sony FX30|DJI Mic"
+Full Production Kit,studio,high,low,indoor,high,high,pro,"studio;documentary;commercial","Setup lengkap untuk produksi serius.","Sony FX3|Sennheiser AVX|DJI Ronin-SC2|Aputure 300x"
