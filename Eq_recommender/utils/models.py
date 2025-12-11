@@ -45,6 +45,7 @@ class Preference:
     focus: List[str] = field(default_factory=list)
     audio_priority: bool = False
     stabilization_priority: bool = False
+    lighting: str = "neutral"  # daylight | lowlight | neutral
 
     def weight_for_band(self, band: str) -> float:
         order = {"low": 1, "medium": 2, "high": 3}
@@ -60,6 +61,7 @@ class Preference:
                 self.budget != "medium",
                 self.mobility != "medium",
                 self.expertise != "beginner",
+                self.lighting != "neutral",
             ]
         )
 

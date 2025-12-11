@@ -13,6 +13,12 @@ def score_kit(kit: EquipmentKit, pref: Preference) -> Dict[str, float]:
         overlap = len(set(pref.environment) & set(kit.environment))
         score += overlap * 1.5
 
+        # Simple lighting bias: if user mentions daylight, prefer kits yang siap outdoor
+        if pref.lighting == "daylight" and "outdoor" not in kit.environment:
+            score -= 0.5
+        if pref.lighting == "lowlight" and "indoor" not in kit.environment:
+            score -= 0.3
+
     if pref.focus:
         focus_overlap = len(set(pref.focus) & set(kit.best_for))
         score += focus_overlap * 2.0

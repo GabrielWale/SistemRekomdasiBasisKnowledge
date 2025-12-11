@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistem Rekomendasi Alat</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Sistem Rekomendasi Alat</h1>
+    <nav>
+      <button data-tab="alat">Data Alat</button>
+      <button data-tab="rekom">Rekomendasi</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="alat" class="tab active">
+      <h2>CRUD Alat</h2>
+      <form id="form-alat" class="card">
+        <input type="hidden" id="alat-id" />
+        <label>Nama Alat <input id="nama-alat" required /></label>
+        <label>Kategori
+          <select id="kategori"></select>
+        </label>
+        <label>Deskripsi <textarea id="deskripsi"></textarea></label>
+        <label>Kebutuhan Konten <input id="kebutuhan" placeholder="vlog travel low light" /></label>
+        <label>Harga Sewa <input id="harga" type="number" min="0" /></label>
+        <label>Stok <input id="stok" type="number" min="0" /></label>
+        <label>Rating <input id="rating" type="number" step="0.1" min="0" max="5" /></label>
+        <label>Gambar (URL) <input id="gambar" /></label>
+        <div class="actions">
+          <button type="submit">Simpan</button>
+          <button type="button" id="reset-form" class="secondary">Reset</button>
+        </div>
+      </form>
+      <div id="alat-list" class="grid"></div>
+    </section>
+
+    <section id="rekom" class="tab">
+      <h2>Rekomendasi</h2>
+      <form id="form-rekom" class="card">
+        <label>Jenis Konten <input id="jenis-konten" placeholder="Vlog di luar ruangan" /></label>
+        <label>Deskripsi Konten <textarea id="deskripsi-konten" placeholder="jalan-jalan siang hari di luar negeri"></textarea></label>
+        <label>Budget <input id="budget" type="number" min="0" /></label>
+        <label>Lokasi <input id="lokasi" placeholder="Yogyakarta" /></label>
+        <button type="submit">Dapatkan Rekomendasi</button>
+      </form>
+      <div id="rekom-results" class="grid"></div>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
