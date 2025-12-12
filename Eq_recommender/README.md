@@ -44,3 +44,7 @@
 - **Database**: `app.db` (SQLite) otomatis dibuat; sudah di-.gitignore
 - **Seed alat contoh**: Sony ZV-1, Canon R6, Rode Wireless GO II, Godox SL60W, DJI RS3 Mini
 - **equipment_data.csv**: masih untuk engine lama; belum dipakai oleh Flask app baru
+
+
+12/12/2025
+Perubahan yang sudah kerjakan hari ini yaitu menambahkan banyak keyword baru pada NLP, memperluas canonical keyword supaya sistem lebih akurat membaca jenis konten, serta menambah stopword agar parsing kalimat jadi lebih bersih. Saya juga sudah memasukkan sekitar 40 data alat baru lengkap dengan field gambar tinggal ganti ke link yang benar nanti
