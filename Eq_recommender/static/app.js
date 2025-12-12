@@ -29,17 +29,24 @@ async function fetchAlats() {
 
 function renderAlatCard(item) {
   const payload = encodeURIComponent(JSON.stringify(item));
-  return `<div class="card-item" data-id="${item.id_alat}" data-json="${payload}">
-    <div class="badge">${item.kategori || 'N/A'}</div>
-    <h3>${item.nama_alat}</h3>
-    <p>${item.deskripsi || ''}</p>
-    <p><strong>Kebutuhan:</strong> ${item.kebutuhan_konten || '-'}</p>
-    <p class="price">Rp ${item.harga_sewa}/hari</p>
-    <p>Stok: ${item.stok} | Rating: ${item.rating_alat ?? 0}</p>
-    <div class="actions-inline">
-      <button class="edit">Edit</button>
-      <button class="delete" style="background:#ef4444;border-color:#ef4444;">Hapus</button>
-    </div>
+  const imgSrc = item.gambar && item.gambar.trim() !== ""
+    ? item.gambar
+    : "https://via.placeholder.com/400x250?text=No+Image";
+
+  return `
+  <div class="card-item" data-id="${item.id_alat}" data-json="${payload}">
+      <img class="card-img" src="${imgSrc}" alt="${item.nama_alat}">
+      <div class="badge">${item.kategori || 'N/A'}</div>
+      <h3>${item.nama_alat}</h3>
+      <p>${item.deskripsi || ''}</p>
+      <p><strong>Kebutuhan:</strong> ${item.kebutuhan_konten || '-'}</p>
+      <p class="price">Rp ${item.harga_sewa}/hari</p>
+      <p>Stok: ${item.stok} | Rating: ${item.rating_alat ?? 0}</p>
+
+      <div class="actions-inline">
+        <button class="edit">Edit</button>
+        <button class="delete" style="background:#ef4444;border-color:#ef4444;">Hapus</button>
+      </div>
   </div>`;
 }
 
@@ -107,14 +114,30 @@ formRekom.addEventListener('submit', async (e) => {
     body: JSON.stringify(payload)
   });
   const data = await res.json();
-  rekomList.innerHTML = data.map(r => `<div class="card-item">
+  rekomList.innerHTML = data.map(r => {
+    const imgSrc = r.alat.gambar && r.alat.gambar.trim() !== ""
+      ? r.alat.gambar
+      : "https://via.placeholder.com/400x250?text=No+Image";
+
+    return `
+    <div class="card-item rekom-card">
+      <img class="card-img" src="${imgSrc}" alt="${r.alat.nama_alat}">
       <div class="badge">${r.alat.kategori || ''}</div>
+
       <h3>${r.alat.nama_alat}</h3>
       <p>${r.alat.deskripsi || ''}</p>
+
       <p><strong>Kebutuhan:</strong> ${r.alat.kebutuhan_konten || '-'}</p>
       <p class="price">Rp ${r.alat.harga_sewa}/hari</p>
-      <p>Skor: ${r.skor.toFixed(2)} | Sim: ${r.sim.toFixed(2)} | Overlap: ${r.overlap.toFixed(2)}</p>
-    </div>`).join('');
+
+      <p>Skor: ${r.skor.toFixed(2)} |
+         Sim: ${r.sim.toFixed(2)} |
+         Overlap: ${r.overlap.toFixed(2)}
+      </p>
+    </div>
+  `;
+  }).join('');
+
   sections.forEach(s => s.classList.remove('active'));
   document.getElementById('rekom').classList.add('active');
 });
